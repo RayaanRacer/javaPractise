@@ -1,0 +1,79 @@
+public class LinkedList{
+    public static class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    public static Node head;
+    public static Node tail;
+    public void addFirst( int data){
+        if(head == null){
+            head = tail = new Node(data);
+            return;
+        }
+        Node newNode = new Node(data);
+        newNode.next= head;
+        head = newNode;
+        
+    }
+    
+    public void addLastByLoop(int data){
+        if(head==null){
+            head = tail = new Node(data);
+            return;
+        }
+        Node temp = head;
+        while(temp.next!= null){
+            temp = temp.next;
+        }
+        temp.next = new Node(data);
+    }
+    
+    public void addLast(int data){
+        if(head==null){
+            head = tail = new Node(data);
+            return;
+        }
+        tail.next = new Node(data);
+        tail = tail.next;
+    }
+    public void traverse(){
+        if(head==null){
+            System.out.println("Empty");
+            return;
+        }
+        Node temp = head;
+        while(temp!= null){
+            System.out.print(temp.data+" => ");
+            temp=temp.next;
+        }
+        System.out.println ("null");
+    }
+    public void reverse(){
+        Node curr = head;
+        Node prev = null;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
+    public static void main(String ar[]){
+        LinkedList ll = new LinkedList();
+        ll.addFirst(2);
+        ll.addFirst(1);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.traverse();
+        ll.reverse();
+        ll.traverse();
+        
+    }
+}
