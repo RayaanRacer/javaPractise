@@ -1,0 +1,42 @@
+import java.util.Stack;
+public class HelloWorld {
+    static class Queue{
+        static Stack<Integer> q1 = new Stack<>();
+        static Stack<Integer> q2 = new Stack<>();
+        public static boolean isEmpty(){
+            return q1.isEmpty();
+        }
+        public static void add(int data){
+            while(!q1.isEmpty()){
+                q2.push(q1.pop());
+            }
+            q1.push(data);
+            while(!q2.isEmpty()){
+                q1.push(q2.pop());
+            }
+        }
+        public static int remove(){
+            if(isEmpty()){
+                System.out.println("Queue is empty");
+                return -1;
+            }
+            return q1.pop();
+        }
+        public static int peek(){
+            if(isEmpty()){
+                System.out.println("Queue is empty");
+                return -1;
+            }
+            return q1.peek();
+        }
+    }
+    public static void main(String[] args) {
+        Queue q1= new Queue();
+        q1.add(1);
+        q1.add(2);
+        q1.add(3);
+        while(!q1.isEmpty()){
+            System.out.print(q1.remove()+" ");
+        }
+    }
+}
