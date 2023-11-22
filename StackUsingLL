@@ -1,0 +1,45 @@
+class StackLinked{
+    public static class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data = data;
+            this.next= null;
+        }
+    }
+    public static Node head;
+    public void push(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+        }
+        newNode.next = head;
+        head = newNode;
+    }
+    public int peak(){
+        if(head==null){
+            System.out.println("Stack is empty");
+            return 0;
+        }
+        return head.data;
+    }
+    public int pop(){
+        if(head==null){
+            System.out.println("Stack is empty");
+            return 0;
+        }
+        Node newNode = head;
+        head = head.next;
+        return newNode.data;
+    }
+    public static void main(String[] args){
+        StackLinked ll = new StackLinked();
+        ll.push(1);
+        ll.push(2);
+        ll.push(3);
+        System.out.println(ll.peak());
+        System.out.println(ll.pop());
+        System.out.println(ll.peak());
+    }
+}
